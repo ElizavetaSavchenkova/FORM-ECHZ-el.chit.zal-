@@ -28,34 +28,56 @@ function Form({ }) {
   //console.log(briefVInputDataName != '')
   //<input id="nameInputBriefV" type="input" />
 
-  const [valueParty, setValueParty] = useState()
-  const [valueAddress, setValueAddress] = useState()
-  const [value3, setValue3] = useState()
+  const [valueParty, setValueParty] = useState("")
+  const [valueAddress, setValueAddress] = useState("")
+  const [valueInn, setValueInn] = useState("")
+  const [value4, setValue4] = useState("")
 
   //function get() {
-   // const dataInn = valueParty.data.inn
-    //console.log(dataInn)
- // }
+  // const dataInn = valueParty.data.inn
+  //console.log(dataInn)
+  // }
 
+  useEffect(() => {
+    console.log(valueAddress)
+    console.log(valueParty)
+    console.log(valueParty.data)
+
+    const dadata = valueParty.data
+    console.log(dadata)
+    if (dadata === undefined) {
+      console.log('dadata')
+    } else {
+      const dadadata = valueParty.data.inn
+      console.log(dadadata)
+      setValueInn(dadadata)
+    }
+    //const dadadata = valueParty.data.inn
+    // console.log(dadadata)
+  })
 
 
 
   //useEffect(() => {
   // console.log(value)
   // console.log(value2);
-  // if (value2 !== ''){
+  //if (valueParty === ''){
   // setValue3(value2.data.inn)
-  // console.log('Не пустая')
+  //console.log('Не пустая')
+  //console.log(valueParty.data.inn)
   // console.log(value3)
   //} else {
   //  setValue3(null)
-  //useEffect(() => {
-    //get = () => {
-    //  if (dataInn === undefined) { return }
+  // console.log('пустая')
+  //console.log(valueParty.data)
 
-      //console.log('Ловушка')
-    //}
- // }, [get])
+  //useEffect(() => {
+  //get = () => {
+  //  if (dataInn === undefined) { return }
+
+  //console.log('Ловушка')
+  //}
+  //}, [valueAddress])
 
   // }
   //console.log(value2.data.inn)
@@ -65,14 +87,16 @@ function Form({ }) {
   //useEffect(()=> {
   //console.log(value)
   //console.log(value2);
-  //if (value2 === null){
+  //if (valueAddress.length === 0){
   // console.log('Не пустая')
   // console.log(value3)
   //} else {
-  //  setValue3(null)
+  //console.log('пустая')
   //}
   //console.log(value2.data.inn)
-  //}, [value, value2, value3])
+  //}, [valueAddress])
+
+
 
   //const url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party";
   //const token = "41688797003f58447658efa9561167f4eb4b9693";
@@ -102,6 +126,18 @@ function Form({ }) {
 
   //let briefVInputDataName = party.value
   // console.log(briefVInputDataName != null)
+
+  //function pro() {
+   // if (valueAddress !== '') {
+    //  console.log('Привет')
+    //}
+  //}
+
+  function handleСhangeAbout(event) {
+    setValue4('Привет')
+    console.log('пример')
+  }
+
 
   return (
 
@@ -163,8 +199,9 @@ function Form({ }) {
             <span className="auth__form-input-name">Полное наименование организации</span>
             <PartySuggestions
               token="41688797003f58447658efa9561167f4eb4b9693"
-              value={valueAddress}
-              onChange={setValueAddress}
+              value={valueParty}
+              onChange={setValueParty}
+
               inputProps={{
                 'placeholder': 'Начните вводить',
                 'className': 'auth__form-input',
@@ -174,7 +211,7 @@ function Form({ }) {
               }}
 
 
-            />;
+            />
             <span className="auth__form-input-error">Ошибка</span>
           </label>
 
@@ -196,8 +233,8 @@ function Form({ }) {
             <span className="auth__form-input-name">Адрес местонахождения</span>
             <AddressSuggestions
               token="41688797003f58447658efa9561167f4eb4b9693"
-              value={valueParty}
-              onChange={setValueParty}
+              value={valueAddress}
+              onChange={setValueAddress}
               inputProps={{
                 'placeholder': 'Начните вводить',
                 'className': 'auth__form-input',
@@ -230,7 +267,7 @@ function Form({ }) {
               name="text"
               placeholder="ИНН"
               required
-              value={''}
+              value={valueInn}
             />
             <span className="auth__form-input-error"></span>
           </label>

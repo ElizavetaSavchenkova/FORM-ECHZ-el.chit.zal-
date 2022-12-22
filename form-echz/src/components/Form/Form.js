@@ -51,10 +51,12 @@ function Form({ }) {
       const dadadata = valueParty.data.inn
       console.log(dadadata)
       setValueInn(dadadata)
+      const ad = valueParty.data.address
+      setValueAddress(ad)
     }
     //const dadadata = valueParty.data.inn
     // console.log(dadadata)
-  })
+  }, [valueAddress, valueParty])
 
 
 
@@ -128,9 +130,9 @@ function Form({ }) {
   // console.log(briefVInputDataName != null)
 
   //function pro() {
-   // if (valueAddress !== '') {
-    //  console.log('Привет')
-    //}
+  // if (valueAddress !== '') {
+  //  console.log('Привет')
+  //}
   //}
 
   function handleСhangeAbout(event) {
@@ -146,8 +148,11 @@ function Form({ }) {
         <a href="https://www.rsl.ru" rel="noreferrer" target="_blank" className="auth__form-logo">
           <img className="auth__form-logo-pic" alt="Логотип" src={logoRgb} />
         </a>
-        <h3 className="auth__form-description">Уважаемые пользователи!</h3>
-        <p className="auth__form-description">Для заключения договора о подключении к НЭБ и о предоставлении доступа к объектам НЭБ необходимо заполнить форму.</p>
+        <div className="form__info-container">
+          <p className="auth__form-description">Уважаемые пользователи!</p>
+          <p className="auth__form-description">Для заключения договора о подключении к НЭБ и о предоставлении доступа к объектам НЭБ необходимо заполнить форму.</p>
+        </div>
+
         <h2 className="auth__form-title">Форма для создания новой заявки</h2>
 
         <fieldset className="auth__form-fieldset">
@@ -166,7 +171,6 @@ function Form({ }) {
             <span className="auth__form-input-error"></span>
           </label>
 
-
           <label className="auth__form-label">
             <span className="auth__form-input-name">Контактное лицо</span>
             <input className='auth__form-input'
@@ -179,7 +183,6 @@ function Form({ }) {
             />
             <span className="auth__form-input-error"></span>
           </label>
-
 
 
           <label className="auth__form-label">
@@ -201,18 +204,14 @@ function Form({ }) {
               token="41688797003f58447658efa9561167f4eb4b9693"
               value={valueParty}
               onChange={setValueParty}
-
               inputProps={{
                 'placeholder': 'Начните вводить',
                 'className': 'auth__form-input',
                 'id': "party",
                 "type": "input"
-
               }}
-
-
             />
-            <span className="auth__form-input-error">Ошибка</span>
+            <span className="auth__form-input-error">error</span>
           </label>
 
 
@@ -225,7 +224,7 @@ function Form({ }) {
               placeholder="Укажите полное наименование организации"
               required
             />
-            <span className="auth__form-input-error">Ошибка</span>
+            <span className="auth__form-input-error">error</span>
           </label>
 
 
@@ -239,9 +238,7 @@ function Form({ }) {
                 'placeholder': 'Начните вводить',
                 'className': 'auth__form-input',
                 'id': "address",
-
               }}
-
             />
             <span className="auth__form-input-error"></span>
           </label>
@@ -274,28 +271,15 @@ function Form({ }) {
 
           <label className="auth__form-label">
             <span className="auth__form-input-name">Примечание</span>
-            <input className='auth__form-input'
-              id="emailReg"
-              type="email"
-              name="email"
-              placeholder="Примечание"
-              required
-            />
+            <p><textarea className="textarea" name="comment"></textarea></p>
             <span className="auth__form-input-error"></span>
           </label>
-
-
-
-
-
-
-
 
           <button
             className='auth__button'
             type="submit"
-            disabled>
-          </button>
+            disabled>Отправить заявку</button>
+
         </fieldset>
         <p className="auth__form-text">{ }
           <p className="auth__form-text-link">{ }</p>

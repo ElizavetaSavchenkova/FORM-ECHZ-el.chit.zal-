@@ -8,32 +8,48 @@ import { useState } from 'react';
 import { AddressSuggestions } from 'react-dadata';
 import 'react-dadata/dist/react-dadata.css';
 
-function Form({ onSubmit, handleChange, keyword }) {
+function Form({ onSubmit, handleChange }) {
 
   const [valueParty, setValueParty] = useState("")
   const [valueAddress, setValueAddress] = useState("")
   const [valueInn, setValueInn] = useState("")
-  //const [value4, setValue4] = useState("")
 
- //
- //function constants(){
-  const email = document.getElementById('email').value
- // console.log(email)
- //}
+  const [value, setValue] = useState('')
+
+  // function a() {
+  //setValue(document.getElementById('email').value)
+
+  // let task = {
+  //   email: email.value || '',
+  //  contact: 'dddddd'
+  //}
+  //}
+  // const email = document.getElementById('email').value
 
 
   function handleSubmit(event) {
     event.preventDefault();
-   // constants()
-    onSubmit();
+    // constants()
+    //a()
+    const email = document.getElementById('email').value
+    console.log(email)
+    const contact = document.getElementById('contact').value
+    console.log(contact)
+
+    let task = {
+      email: email,
+      contact: contact
+    }
+    console.log(task)
+    onSubmit(task);
 
   }
+
 
   useEffect(() => {
     console.log(valueAddress)
     console.log(valueParty)
     console.log(valueParty.data)
-
     const dadata = valueParty.data
     console.log(dadata)
     if (dadata === undefined) {
@@ -45,49 +61,10 @@ function Form({ onSubmit, handleChange, keyword }) {
       const ad = valueParty.data.address
       setValueAddress(ad)
       const input_val = document.getElementById('email').value;
-      //console.log(email)
       console.log(input_val)
-
     }
-    //const dadadata = valueParty.data.inn
-    // console.log(dadadata)
+
   }, [valueAddress, valueParty])
-
-  // function handleСhangeAbout(event) {
-  // setValue4('Привет')
-  //console.log('пример')
-  //}
-
-  // useEffect(()=> {
-  //const input_val = document.getElementById('contact').value;
-  //console.log(email)
-  //console.log(input_val)
-  // })
-
-  //const task = {
-  //  taskEmail: email
-  //};
-  //
-  //  function ad_del(id, email_id) {
-
-  //}
-
-
-  let task = {
-    email : email.value,
-    contact : 'dddddd'
-  }
-
-  //useEffect(()=> {
-   // console.log(task.email)
-  //})
-
-  //const task = (state) => ({
-  //  email : "dd",
-  //  contact : 'dddddd'
-//});
-
-
 
 
 

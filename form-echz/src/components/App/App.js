@@ -35,6 +35,9 @@ function App() {
     api.addReq(task)
       .then((newTask) => {
         console.log('создалась задача')
+        //let newTasking  = {
+        // email: email
+        //}
         console.log(newTask)
         console.log(task)
         console.log(newTask.id)
@@ -58,10 +61,11 @@ function App() {
   return (
     <div className="page">
       <Form
-       // onSubmit= {() => {addTask();addContact();}}
-        onSubmit= {addTask}
+        // onSubmit= {() => {addTask();addContact();}}
+        onSubmit={addTask}
         handleChange={handleChangeInputKeyword}
         keyword={keyword}
+
       />
     </div >
 

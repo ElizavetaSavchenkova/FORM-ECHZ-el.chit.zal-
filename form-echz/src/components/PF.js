@@ -53,7 +53,7 @@ class Api {
         "Content-Type": "application/json",
         'Authorization': 'Bearer 5c4454b83761f4a0e4265c9a907346de'
       }, body: JSON.stringify({
-        name: "Заявка на создание ЭЧЗ_тестАпи",
+        name: `Заявка на создание ЭЧЗ_тестАпи от ${task.email}`,
         description: "Задача ЭЧЗ",
         "template": {
           "id": 702773
@@ -63,7 +63,7 @@ class Api {
             "field": {
               "id": 163080
             },
-            "value": task
+            "value": task.email
           }
         ]
       })

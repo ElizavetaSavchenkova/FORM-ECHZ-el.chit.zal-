@@ -91,3 +91,5 @@ fetch(url, options)
 .catch(error => console.log("error", error));
 
 console.log(query.data.inn)
+
+

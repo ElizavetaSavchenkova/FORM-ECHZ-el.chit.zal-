@@ -36,12 +36,26 @@ function Form({ onSubmit, handleChange }) {
     const contact = document.getElementById('contact').value
     console.log(contact)
 
+
     let task = {
       email: email,
-      contact: contact
     }
-    console.log(task)
-    onSubmit(task);
+
+    let newContact = {
+      name: contact
+    }
+
+    //let obj = {
+    //   email: email,
+    //  name: contact
+    // }
+
+    //console.log(task)
+    //console.log(newContact)
+    //console.log(obj)
+    //onSubmit(obj);
+    //onSubmit(newContact, task);
+    onSubmit(task, newContact);
 
   }
 
@@ -65,6 +79,48 @@ function Form({ onSubmit, handleChange }) {
     }
 
   }, [valueAddress, valueParty])
+
+
+  const arrayInn = ['7777777777', '5555555555', '7722789517', '7704097560'];
+  //const containsAdmin = arrayInn.some(element => element === '5555555555');
+  //console.log(containsAdmin)
+  //let [firstName, surname] = arrayInn;
+  //alert(firstName)
+
+
+  function arrayFind() {
+
+    const inn = document.getElementById('inn').value
+
+    for (var i = 0; i < arrayInn.length; i++) {
+      if (inn === (arrayInn[i])) {
+        console.log('Такая организация уже зарегистрирована');
+      }
+      else {
+        console.log('Вы успешно отправили заявку');
+      };
+
+    }
+
+    //if (inn === arrayInn) {
+    // console.log(inn)
+    //console.log('Привет')
+    //} else {
+    //  console.log('инн')
+    //  console.log(inn)
+    //}
+    //}
+
+
+    //function(form){
+
+  }
+
+
+  useEffect(() => {
+    arrayFind()
+  })
+
 
 
 
@@ -108,6 +164,7 @@ function Form({ onSubmit, handleChange }) {
               minLength="2"
               maxLength="50"
               required
+              onChange={handleChange}
 
             />
             <span className="auth__form-input-error"></span>

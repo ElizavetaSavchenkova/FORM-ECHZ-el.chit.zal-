@@ -21,7 +21,7 @@ class Api {
   //  },
   //}).then((res) => this._checkResponse(res));
   //}
-  addNewContact() {
+  addNewContact(newContact) {
     return fetch(`${this._url}/contact/`, {
       method: 'POST',
       headers: {
@@ -29,9 +29,9 @@ class Api {
         'Authorization': 'Bearer 5c4454b83761f4a0e4265c9a907346de'
       }, body: JSON.stringify({
         "templateId": 1,
-        name: "TEST",
-        midname: "TESTOVICH",
-        lastname: "Ivanov",
+        name: newContact.name,
+        //midname: newContact,
+        //lastname: newContact,
         "customFieldData": [
           {
             "field": {
@@ -69,6 +69,26 @@ class Api {
       })
     }).then((res) => this._checkResponse(res));
   }
+
+  getAllContacts() {
+    return fetch(`${this._url}/contact/list/`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer 5c4454b83761f4a0e4265c9a907346de'
+      }, body: JSON.stringify({
+        "offset": 0,
+        "pageSize": 100,
+        "fields": "id,name,lastname,162698",
+        "filters": [{
+          "type": 4101,
+          "operator": "equal",
+          "value": "7777777",
+          "field": 162698
+        }]
+      }),
+    }).then((res) => this._checkResponse(res));
+  }
 }
 
 const api = new Api({
@@ -82,7 +102,6 @@ const api = new Api({
 export default api;
 
 //5c4454b83761f4a0e4265c9a907346de,
-
 //country: movie.country,
 //director: movie.director,
 //duration: movie.duration,

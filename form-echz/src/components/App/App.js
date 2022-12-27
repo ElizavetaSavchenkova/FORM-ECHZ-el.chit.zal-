@@ -15,12 +15,14 @@ import './App.css';
 function App() {
   const [keyword, setKeyword] = useState('')
 
-  function addContact(name, midname, lastname) {
-    api.addNewContact(name, midname, lastname)
-      .then((newContact) => {
+  function addContact(newContact) {
+    console.log(newContact)
+    api.addNewContact(newContact)
+
+      .then((newwwContact) => {
         console.log('создался контакт')
-        console.log(newContact)
-        console.log(newContact.id)
+        console.log(newwwContact)
+        console.log(newwwContact.id)
         //setCards([newCard.card, ...cards]);
         //closeAllPopups();
       })
@@ -35,17 +37,9 @@ function App() {
     api.addReq(task)
       .then((newTask) => {
         console.log('создалась задача')
-        //let newTasking  = {
-        // email: email
-        //}
         console.log(newTask)
-        console.log(task)
+        //console.log(obj)
         console.log(newTask.id)
-        //console.log(name)
-
-
-        //setCards([newCard.card, ...cards]);
-        //closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
@@ -58,11 +52,52 @@ function App() {
     console.log(event.target.value);
   }
 
+
+  //function rew(){
+  /// Promise.all([api.addReq(), api.addNewContact()])
+  // .then(([task, newContact]) => {
+  //  console.log(task)
+  // console.log(newContact)
+  //
+  // })
+  ///.catch((err) => {
+  //  console.log(err);
+  // });
+  //}
+
+
+  function getContact() {
+    api.getAllContacts()
+      .then((contact) => {
+        console.log('создалась задача')
+        console.log(contact)
+        //console.log(obj)
+        //console.log(newTask.id)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const arrayInn = ['7777777777', '5555555555'];
+  const containsAdmin = arrayInn.some(element => element === '5555555555');
+  console.log(containsAdmin)
+  // в containsAdmin будет записано true
+
+
+
+
   return (
     <div className="page">
       <Form
-        // onSubmit= {() => {addTask();addContact();}}
-        onSubmit={addTask}
+        //onSubmit= {() => {addTask();addContact();}}
+        //onSubmit={addTask}
+        //onSubmit={addContact}
+        //onSubmit={rew}
+
+
+        onSubmit={getContact}
+
         handleChange={handleChangeInputKeyword}
         keyword={keyword}
 

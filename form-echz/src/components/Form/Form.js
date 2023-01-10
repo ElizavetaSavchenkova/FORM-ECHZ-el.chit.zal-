@@ -7,6 +7,8 @@ import { PartySuggestions } from 'react-dadata';
 import { useState } from 'react';
 import { AddressSuggestions } from 'react-dadata';
 import 'react-dadata/dist/react-dadata.css';
+import ReactDadataBox from 'react-dadata-box';
+import { SpecificQueryModeResponse } from 'react-dadata-box';
 
 function Form({ onSubmit, handleChange }) {
 
@@ -137,6 +139,23 @@ function Form({ onSubmit, handleChange }) {
         <h1 className="auth__form-title">Форма для создания новой заявки</h1>
 
         <fieldset className="auth__form-fieldset">
+
+        <label className="auth__form-label">
+            <span className="auth__form-input-name">Поиск по названию организации/ ИНН/ адресу</span>
+            <PartySuggestions
+              token="41688797003f58447658efa9561167f4eb4b9693"
+              value={valueParty}
+              onChange={setValueParty}
+              inputProps={{
+                'placeholder': 'Начните вводить',
+                'className': 'auth__form-input',
+                'id': "party",
+                "type": "input"
+              }}
+            />
+            <span className="auth__form-input-error"></span>
+          </label>
+
           <label className="auth__form-label">
             <span className="auth__form-input-name">Электронная почта</span>
             <input className='auth__form-input'
@@ -276,3 +295,13 @@ function Form({ onSubmit, handleChange }) {
 }
 
 export default Form
+
+
+//<label className="auth__form-label">
+//<span className="auth__form-input-name">Поиск организации</span>
+//<ReactDadataBox
+ // token='41688797003f58447658efa9561167f4eb4b9693' />
+
+
+//<span className="auth__form-input-error"></span>
+//</label>

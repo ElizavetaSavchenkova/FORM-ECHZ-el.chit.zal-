@@ -50,6 +50,8 @@
 //export default moviesApi
 
 
+//////////////////////////////////////////////////// убрала 10.01.23
+
 //var token = "41688797003f58447658efa9561167f4eb4b9693";
 //var query = "сбербанк";
 
@@ -69,27 +71,5 @@
 //.then(result => console.log(result))
 //.catch(error => console.log("error", error));
 
-
-var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party";
-var token = "41688797003f58447658efa9561167f4eb4b9693";
-var query = "сбербанк";
-
-var options = {
-    method: "POST",
-    mode: "cors",
-    headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Authorization": "Token " + token
-    },
-    body: JSON.stringify({query: query})
-}
-
-fetch(url, options)
-.then(response => response.text())
-.then(result => console.log(result))
-.catch(error => console.log("error", error));
-
-console.log(query.data.inn)
 
 
